@@ -1,0 +1,50 @@
+<script>
+var chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var passwd = 'bla';
+
+function loopChars(char) {
+	return chars[chars.indexOf(char)+1] || chars[0]
+}
+
+String.prototype.replaceAt = function (index, character) {
+	return this.substr(0,index) + character + this.substr(index+character.length);
+}
+
+function buildCheckVal(testString, curCharPos) {
+
+	walkTestString = function () {
+
+		curCharPos = (curCharPos === undefined) ? testString.length -1 : curCharPos;
+		var curChar = testString[curCharPos]
+		var nextChar = loopChars(testString[curCharPos]);
+
+		testString = (curCharPos >= 0) ? testString.replaceAt(curCharPos, nextChar) : testString;
+
+		if (curCharPos === -1) {
+			testString = chars[0] + testString;
+		} else if (nextChar === chars[0]) {
+			curCharPos = curCharPos-1;
+			return true;
+		}
+		return false;
+	}
+
+	while (walkTestString(testString, curCharPos));
+	return testString;
+}
+
+function recurse(testString) {
+
+	if (testString === passwd) {
+		console.log('Solved: ' + testString);
+		return;
+	}
+
+	var checkValue = buildCheckVal(testString)
+
+	recurse(checkValue);
+}
+
+</script>
+
+recurse(chars[0]);
