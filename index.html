@@ -40,9 +40,7 @@ function recurse(testString) {
 		return;
 	}
 
-	var checkValue = buildCheckVal(testString)
-
-	recurse(checkValue);
+	recurse(buildCheckVal(testString));
 }
 
 recurse(chars[0]);
