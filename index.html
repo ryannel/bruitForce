@@ -3,7 +3,7 @@ var chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n
 var passwd = 'bla';
 
 function loopChars(char) {
-	return chars[chars.indexOf(char)+1] || chars[0]
+	return chars[chars.indexOf(char)+1] || chars[0];
 }
 
 String.prototype.replaceAt = function (index, character) {
