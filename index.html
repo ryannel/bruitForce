@@ -11,9 +11,7 @@ String.prototype.replaceAt = function (index, character) {
 }
 
 function buildCheckVal(testString, curCharPos) {
-
 	walkTestString = function () {
-
 		curCharPos = (curCharPos === undefined) ? testString.length -1 : curCharPos;
 		var curChar = testString[curCharPos]
 		var nextChar = loopChars(testString[curCharPos]);
