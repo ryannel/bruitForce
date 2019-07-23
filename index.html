@@ -32,6 +32,7 @@ function buildCheckVal(testString, curCharPos) {
 }
 
 function recurse(testString) {
+	console.log("trying: " + testString)
 	if (testString === passwd) {
 		console.log('Solved: ' + testString);
 		return;
